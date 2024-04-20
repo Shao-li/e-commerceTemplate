@@ -1,12 +1,17 @@
+//import dotenv from 'dotenv';
+const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const logger = require('../logger/api.logger');
 
 const connect = () => {
 
-    const url = process.env.MONGO_CONNECTION_STRING;
-    logger.info("process.env.MONGO_CONNECTION_STRING :::" + process.env.MONGO_CONNECTION_STRING);
+    //const connectionString = process.env.MONGO_CONNECTION_STRING;
+    //logger.info("process.env.MONGO_CONNECTION_STRING :::" + process.env.MONGO_CONNECTION_STRING);
+    dotenv.config()
+    const connectionString = process.env.MONGO_CONNECTION_STRING
+    logger.info("MONGO_CONNECTION_STRING DIEGO :::" + connectionString);
 
-    mongoose.connect(url, {
+    mongoose.connect(connectionString, {
         useNewUrlParser: true,
         useFindAndModify: true,
         useUnifiedTopology: true,
